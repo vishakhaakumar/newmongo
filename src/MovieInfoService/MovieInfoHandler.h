@@ -22,6 +22,7 @@ class MovieInfoServiceHandler : public MovieInfoServiceIf {
   ~MovieInfoServiceHandler() override=default;
 
   void GetMoviesByIds(std::vector<std::string>& _return, const std::vector<std::string> & movie_ids) override;
+  void GetMoviesByTitle(std::vector<std::string> & _return, const std::string& movie_string) override;
  private:
     mongoc_client_pool_t *_mongodb_client_pool;
 };
@@ -30,6 +31,10 @@ class MovieInfoServiceHandler : public MovieInfoServiceIf {
 MovieInfoServiceHandler::MovieInfoServiceHandler(mongoc_client_pool_t *mongodb_client_pool) {
  // Storing the clientpool
        _mongodb_client_pool = mongodb_client_pool;
+}
+	
+ void MovieInfoServiceHandler::GetMoviesByTitle(std::vector<std::string> & _return, const std::string& movie_string){
+     _return = "By title here";	
 }
 
 // Remote Procedure "GetMoviesById"
