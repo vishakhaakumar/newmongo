@@ -77,8 +77,8 @@ void MovieInfoServiceHandler::GetMoviesByIds(std::vector<std::string>& _return, 
 		std::cout << "Mongodb after insert here !!!!!!!! ..." << std::endl;
 
 		 bson_t *movie_doc1 = bson_new();
-		 BSON_APPEND_INT64(movie_doc, "movie_id", 456);
-                 BSON_APPEND_UTF8(movie_doc, "title", "Spiderman");
+		 BSON_APPEND_INT64(movie_doc1, "movie_id", 456);
+                 BSON_APPEND_UTF8(movie_doc1, "title", "Spiderman");
                  std::cout << "data title2 insert done !!!!!!! ..." << std::endl;
 
 	         bool movieinsert1 = mongoc_collection_insert_one (collection, movie_doc1, nullptr, nullptr, &error);
@@ -103,7 +103,7 @@ void MovieInfoServiceHandler::GetMoviesByIds(std::vector<std::string>& _return, 
 	}
 
 	  bson_t *query = bson_new();
-          BSON_APPEND_INT64(query, "movie_id", 456);
+          BSON_APPEND_INT64(query, "movie_id", 123);
 
           mongoc_cursor_t *cursor = mongoc_collection_find_with_opts(collection, query, nullptr, nullptr);
           const bson_t *doc;
@@ -121,7 +121,7 @@ void MovieInfoServiceHandler::GetMoviesByIds(std::vector<std::string>& _return, 
 	      //std::cout << "movie found is ------>>>>  !!!!!!! ..."<< title <<" this " << std::endl;     	   
               // _return.push_back(title);
 	        mongoc_cursor_destroy(cursor);
-	        mongoc_collection_destroy(collection);
+	      //  mongoc_collection_destroy(collection);
 	        mongoc_client_pool_push(_mongodb_client_pool, mongodb_client);
 	        //throw se;
 	     }else {
