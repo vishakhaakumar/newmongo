@@ -34,7 +34,8 @@ MovieInfoServiceHandler::MovieInfoServiceHandler(mongoc_client_pool_t *mongodb_c
 }
 	
  void MovieInfoServiceHandler::GetMoviesByTitle(std::vector<std::string> & _return, const std::string& movie_string){
-     _return = "By title here";	
+	 std::cout << "************** Inside get movies by title *************** !!!!!!!! ..." << std::endl;
+         _return.push_back("Wonder Woman");	
 }
 
 // Remote Procedure "GetMoviesById"
